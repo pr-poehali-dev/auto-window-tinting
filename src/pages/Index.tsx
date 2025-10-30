@@ -7,6 +7,7 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('');
+  const [countersAnimated, setCountersAnimated] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,11 +21,34 @@ const Index = () => {
         return false;
       });
       if (current) setActiveSection(current);
+
+      if (!countersAnimated) {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach((counter) => {
+          const rect = counter.getBoundingClientRect();
+          if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            setCountersAnimated(true);
+            const target = parseInt(counter.getAttribute('data-target') || '0');
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                counter.textContent = target.toString();
+                clearInterval(timer);
+              } else {
+                counter.textContent = Math.floor(current).toString();
+              }
+            }, 30);
+          }
+        });
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [countersAnimated]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -170,6 +194,29 @@ const Index = () => {
               </p>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3 counter" data-target="6">0</div>
+              <div className="text-xl font-semibold text-gray-700">Лет опыта</div>
+            </div>
+            <div className="text-center">
+              <div className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3 counter" data-target="1200">0</div>
+              <div className="text-xl font-semibold text-gray-700">Автомобилей</div>
+            </div>
+            <div className="text-center">
+              <div className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3 counter" data-target="98">0</div>
+              <div className="text-xl font-semibold text-gray-700">% довольных клиентов</div>
+            </div>
+            <div className="text-center">
+              <div className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-3 counter" data-target="15">0</div>
+              <div className="text-xl font-semibold text-gray-700">Лет гарантия</div>
+            </div>
+          </div>
         </div>
       </section>
 
