@@ -44,73 +44,83 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-md z-50">
-        <nav className="container mx-auto px-4 py-4">
+      <header className="fixed top-0 left-0 right-0 glass-effect shadow-2xl z-50">
+        <nav className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Icon name="Sparkles" size={28} className="text-primary" />
-              <span className="font-bold text-2xl text-primary">AutoTint</span>
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-lg">
+                <Icon name="Car" size={28} className="text-white" />
+              </div>
+              <span className="font-bold text-3xl gold-shine" style={{fontFamily: "'Playfair Display', serif"}}>PREMIUM TINT</span>
             </div>
-            <ul className="hidden md:flex gap-6">
+            <ul className="hidden md:flex gap-8">
               {menuItems.map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => scrollToSection(item.id)}
-                    className={`flex items-center gap-2 hover:text-primary transition-colors ${
-                      activeSection === item.id ? 'text-primary font-semibold' : 'text-gray-700'
+                    className={`text-sm uppercase tracking-wider font-semibold transition-all duration-300 ${
+                      activeSection === item.id ? 'text-primary border-b-2 border-primary pb-1' : 'text-gray-700 hover:text-primary'
                     }`}
                   >
-                    <Icon name={item.icon} size={18} />
                     {item.label}
                   </button>
                 </li>
               ))}
             </ul>
-            <Button onClick={() => scrollToSection('contact')} size="lg" className="hidden md:flex">
-              <Icon name="Phone" size={18} className="mr-2" />
-              Оставить заявку
+            <Button onClick={() => scrollToSection('contact')} size="lg" className="hidden md:flex bg-gradient-to-r from-primary to-accent hover:shadow-xl transition-all duration-300 text-white font-semibold px-8">
+              Записаться
             </Button>
           </div>
         </nav>
       </header>
 
-      <section className="pt-32 pb-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+      <section className="relative pt-40 pb-32 overflow-hidden">
+        <div className="absolute inset-0 luxury-gradient"></div>
+        <div className="absolute inset-0 opacity-10" style={{backgroundImage: "url('https://cdn.poehali.dev/projects/debde2b0-914c-4ef3-bf5c-52c0e58e094f/files/7976a0be-bfd9-42ef-8e00-a5bf6ea889f0.jpg')", backgroundSize: 'cover', backgroundPosition: 'center'}}></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="animate-fade-in text-white">
+              <div className="inline-block mb-4 px-4 py-2 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30">
+                <span className="text-accent text-sm font-semibold uppercase tracking-wider">Премиум сервис</span>
+              </div>
+              <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
                 Тонирование и бронирование автомобилей в Краснодаре
               </h1>
-              <p className="text-lg text-gray-700 mb-8">
+              <p className="text-xl text-gray-300 mb-10 leading-relaxed">
                 Тонировка автомобиля – процесс который требует большого опыта и надлежащего инструмента. Наши специалисты работают в этой сфере уже более 6 лет и гарантируют высочайшее качество своей работы, а значит и Ваше полное удовлетворение ее результатами.
               </p>
-              <Button onClick={() => scrollToSection('contact')} size="lg" className="text-lg px-8 py-6">
-                <Icon name="Phone" size={20} className="mr-2" />
-                Оставить заявку
+              <Button onClick={() => scrollToSection('contact')} size="lg" className="text-lg px-10 py-7 bg-gradient-to-r from-primary to-accent hover:shadow-2xl transition-all duration-300 text-white font-bold">
+                Записаться на консультацию
               </Button>
             </div>
-            <div className="hover-scale">
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary to-accent opacity-20 blur-3xl rounded-3xl"></div>
               <img
                 src="https://cdn.poehali.dev/projects/debde2b0-914c-4ef3-bf5c-52c0e58e094f/files/7976a0be-bfd9-42ef-8e00-a5bf6ea889f0.jpg"
                 alt="Тонированный автомобиль"
-                className="rounded-2xl shadow-2xl w-full"
+                className="rounded-3xl premium-shadow w-full relative z-10 hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="services" className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Наши услуги</h2>
+      <section id="services" className="py-24 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <span className="text-accent text-sm font-bold uppercase tracking-widest">Элитный сервис</span>
+            <h2 className="text-5xl md:text-6xl font-bold mt-4 mb-4">Наши услуги</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+          </div>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <Card className="hover-scale border-2 hover:border-primary transition-all">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-3 bg-primary/10 rounded-lg">
-                    <Icon name="Sun" size={28} className="text-primary" />
+            <Card className="group premium-shadow hover:scale-105 transition-all duration-500 border-0 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="relative">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="p-4 bg-gradient-to-br from-primary to-accent rounded-xl shadow-lg">
+                    <Icon name="Sun" size={32} className="text-white" />
                   </div>
-                  <CardTitle className="text-2xl">Тонирование стекол плёнками из США</CardTitle>
+                  <CardTitle className="text-3xl">Тонирование стекол плёнками из США</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
@@ -123,13 +133,14 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover-scale border-2 hover:border-secondary transition-all">
-              <CardHeader>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-3 bg-secondary/10 rounded-lg">
-                    <Icon name="Shield" size={28} className="text-secondary" />
+            <Card className="group premium-shadow hover:scale-105 transition-all duration-500 border-0 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <CardHeader className="relative">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="p-4 bg-gradient-to-br from-secondary to-gray-800 rounded-xl shadow-lg">
+                    <Icon name="Shield" size={32} className="text-white" />
                   </div>
-                  <CardTitle className="text-2xl">Мы делаем съемную, атермальную и электронные тонировки уже 6 лет</CardTitle>
+                  <CardTitle className="text-3xl">Мы делаем съемную, атермальную и электронные тонировки уже 6 лет</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
@@ -140,13 +151,14 @@ const Index = () => {
             </Card>
           </div>
 
-          <Card className="border-2 border-accent hover-scale">
-            <CardHeader>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-3 bg-accent/10 rounded-lg">
-                  <Icon name="Scale" size={28} className="text-accent" />
+          <Card className="group premium-shadow hover:scale-105 transition-all duration-500 border-0 overflow-hidden bg-gradient-to-br from-accent/10 to-primary/10">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <CardHeader className="relative">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="p-4 bg-gradient-to-br from-accent to-yellow-600 rounded-xl shadow-lg">
+                  <Icon name="Scale" size={32} className="text-secondary" />
                 </div>
-                <CardTitle className="text-2xl">Тонировка по ГОСТ и штрафы</CardTitle>
+                <CardTitle className="text-3xl">Тонировка по ГОСТ и штрафы</CardTitle>
               </div>
             </CardHeader>
             <CardContent>
@@ -161,16 +173,21 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="advantages" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Преимущества тонирования стекол автомобилей</h2>
+      <section id="advantages" className="py-24 luxury-gradient relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px)"}}></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <span className="text-accent text-sm font-bold uppercase tracking-widest">Почему выбирают нас</span>
+            <h2 className="text-5xl md:text-6xl font-bold mt-4 mb-4 text-white">Преимущества тонирования стекол автомобилей</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="hover-scale border-t-4 border-t-primary">
+            <Card className="group glass-effect hover:scale-105 transition-all duration-500 border-0">
               <CardHeader>
-                <div className="p-3 bg-primary/10 rounded-lg w-fit mb-3">
-                  <Icon name="Eye" size={32} className="text-primary" />
+                <div className="p-4 bg-gradient-to-br from-primary to-accent rounded-xl w-fit mb-4 shadow-xl group-hover:shadow-2xl transition-shadow duration-500">
+                  <Icon name="Eye" size={36} className="text-white" />
                 </div>
-                <CardTitle className="text-xl">Защита от взглядов</CardTitle>
+                <CardTitle className="text-2xl mb-3">Защита от взглядов</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-700">
@@ -179,12 +196,12 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover-scale border-t-4 border-t-secondary">
+            <Card className="group glass-effect hover:scale-105 transition-all duration-500 border-0">
               <CardHeader>
-                <div className="p-3 bg-secondary/10 rounded-lg w-fit mb-3">
-                  <Icon name="ShieldCheck" size={32} className="text-secondary" />
+                <div className="p-4 bg-gradient-to-br from-secondary to-gray-800 rounded-xl w-fit mb-4 shadow-xl group-hover:shadow-2xl transition-shadow duration-500">
+                  <Icon name="ShieldCheck" size={36} className="text-white" />
                 </div>
-                <CardTitle className="text-xl">Бронирующий эффект</CardTitle>
+                <CardTitle className="text-2xl mb-3">Бронирующий эффект</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-700">
@@ -193,12 +210,12 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover-scale border-t-4 border-t-accent">
+            <Card className="group glass-effect hover:scale-105 transition-all duration-500 border-0">
               <CardHeader>
-                <div className="p-3 bg-accent/10 rounded-lg w-fit mb-3">
-                  <Icon name="Sparkles" size={32} className="text-accent" />
+                <div className="p-4 bg-gradient-to-br from-accent to-yellow-600 rounded-xl w-fit mb-4 shadow-xl group-hover:shadow-2xl transition-shadow duration-500">
+                  <Icon name="Sparkles" size={36} className="text-secondary" />
                 </div>
-                <CardTitle className="text-xl">Красивый внешний вид</CardTitle>
+                <CardTitle className="text-2xl mb-3">Красивый внешний вид</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-700">
@@ -280,38 +297,52 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="pricing" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Стоимость тонировки автомобиля</h2>
-          <p className="text-center text-gray-600 mb-12 text-lg">Цена зависит от класса автомобиля, сложности и размера стекол.</p>
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="hover-scale border-t-4 border-t-primary">
-              <CardHeader>
-                <Icon name="Car" size={40} className="text-primary mb-3" />
-                <CardTitle className="text-2xl">Российские автомобили</CardTitle>
-                <CardDescription className="text-3xl font-bold text-primary mt-2">от 2000 ₽</CardDescription>
+      <section id="pricing" className="py-24 bg-gradient-to-b from-white to-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-20">
+            <span className="text-accent text-sm font-bold uppercase tracking-widest">Прозрачные цены</span>
+            <h2 className="text-5xl md:text-6xl font-bold mt-4 mb-6">Стоимость тонировки автомобиля</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Цена зависит от класса автомобиля, сложности и размера стекол.</p>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-6"></div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <Card className="group premium-shadow hover:scale-105 transition-all duration-500 border-0 overflow-hidden relative">
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary to-accent"></div>
+              <CardHeader className="text-center pt-8">
+                <div className="p-5 bg-gradient-to-br from-primary to-accent rounded-2xl w-fit mx-auto mb-6 shadow-xl">
+                  <Icon name="Car" size={48} className="text-white" />
+                </div>
+                <CardTitle className="text-2xl mb-4">Российские автомобили</CardTitle>
+                <CardDescription className="text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">от 2000 ₽</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm">(цена указана за задний полукруг - заднее стекло, стекла задних дверей)</p>
               </CardContent>
             </Card>
 
-            <Card className="hover-scale border-t-4 border-t-secondary">
-              <CardHeader>
-                <Icon name="Car" size={40} className="text-secondary mb-3" />
-                <CardTitle className="text-2xl">Автомобили иностранного производства</CardTitle>
-                <CardDescription className="text-3xl font-bold text-secondary mt-2">от 3000 ₽</CardDescription>
+            <Card className="group premium-shadow hover:scale-105 transition-all duration-500 border-0 overflow-hidden relative">
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary to-gray-700"></div>
+              <CardHeader className="text-center pt-8">
+                <div className="p-5 bg-gradient-to-br from-secondary to-gray-800 rounded-2xl w-fit mx-auto mb-6 shadow-xl">
+                  <Icon name="Car" size={48} className="text-white" />
+                </div>
+                <CardTitle className="text-2xl mb-4">Автомобили иностранного производства</CardTitle>
+                <CardDescription className="text-5xl font-bold bg-gradient-to-r from-secondary to-gray-700 bg-clip-text text-transparent">от 3000 ₽</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm">(цена указана за задний полукруг - заднее стекло, стекла задних дверей)</p>
               </CardContent>
             </Card>
 
-            <Card className="hover-scale border-t-4 border-t-accent">
-              <CardHeader>
-                <Icon name="Crown" size={40} className="text-accent mb-3" />
-                <CardTitle className="text-2xl">Премиум и бизнес класс</CardTitle>
-                <CardDescription className="text-3xl font-bold text-accent mt-2">от 3500 ₽</CardDescription>
+            <Card className="group premium-shadow hover:scale-105 transition-all duration-500 border-0 overflow-hidden relative bg-gradient-to-br from-accent/5 to-primary/5">
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-accent to-primary"></div>
+              <div className="absolute top-4 right-4 px-3 py-1 bg-accent text-secondary text-xs font-bold rounded-full uppercase">VIP</div>
+              <CardHeader className="text-center pt-8">
+                <div className="p-5 bg-gradient-to-br from-accent to-yellow-600 rounded-2xl w-fit mx-auto mb-6 shadow-2xl">
+                  <Icon name="Crown" size={48} className="text-secondary" />
+                </div>
+                <CardTitle className="text-2xl mb-4">Премиум и бизнес класс</CardTitle>
+                <CardDescription className="text-5xl font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">от 3500 ₽</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 text-sm">(цена указана за задний полукруг - заднее стекло, стекла задних дверей)</p>
@@ -319,8 +350,8 @@ const Index = () => {
             </Card>
           </div>
 
-          <div className="bg-white rounded-2xl p-8">
-            <h3 className="text-3xl font-bold mb-6">Бронирование авто пленкой</h3>
+          <div className="premium-shadow bg-gradient-to-br from-white to-gray-50 rounded-3xl p-10 border border-gray-100">
+            <h3 className="text-4xl md:text-5xl font-bold mb-8">Бронирование авто пленкой</h3>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <p className="text-gray-700 mb-4">
@@ -387,14 +418,19 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-20 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Оставить заявку</h2>
-            <p className="text-center text-gray-600 mb-12 text-lg">
-              Заполните форму, и мы свяжемся с вами в ближайшее время
-            </p>
-            <Card className="border-2 shadow-xl">
+      <section id="contact" className="py-24 luxury-gradient relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px)"}}></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="text-accent text-sm font-bold uppercase tracking-widest">Свяжитесь с нами</span>
+              <h2 className="text-5xl md:text-6xl font-bold mt-4 mb-6 text-white">Записаться на консультацию</h2>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                Заполните форму, и наш специалист свяжется с вами в течение 15 минут
+              </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mt-6"></div>
+            </div>
+            <Card className="glass-effect border-white/20 premium-shadow">
               <CardContent className="pt-6">
                 <form
                   onSubmit={(e) => {
@@ -404,31 +440,31 @@ const Index = () => {
                   className="space-y-6"
                 >
                   <div>
-                    <label htmlFor="name" className="block text-sm font-semibold mb-2">
+                    <label htmlFor="name" className="block text-sm font-bold mb-3 text-gray-700 uppercase tracking-wide">
                       Ваше имя
                     </label>
-                    <Input id="name" placeholder="Иван Иванов" required />
+                    <Input id="name" placeholder="Иван Иванов" required className="h-14 text-lg bg-white/50 backdrop-blur-sm border-2 focus:border-primary" />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold mb-3 text-gray-700 uppercase tracking-wide">
                       Телефон
                     </label>
-                    <Input id="phone" type="tel" placeholder="+7 (900) 123-45-67" required />
+                    <Input id="phone" type="tel" placeholder="+7 (900) 123-45-67" required className="h-14 text-lg bg-white/50 backdrop-blur-sm border-2 focus:border-primary" />
                   </div>
                   <div>
-                    <label htmlFor="car" className="block text-sm font-semibold mb-2">
+                    <label htmlFor="car" className="block text-sm font-bold mb-3 text-gray-700 uppercase tracking-wide">
                       Марка и модель автомобиля
                     </label>
-                    <Input id="car" placeholder="Toyota Camry" required />
+                    <Input id="car" placeholder="Mercedes-Benz S-Class" required className="h-14 text-lg bg-white/50 backdrop-blur-sm border-2 focus:border-primary" />
                   </div>
                   <div>
-                    <label htmlFor="message" className="block text-sm font-semibold mb-2">
+                    <label htmlFor="message" className="block text-sm font-bold mb-3 text-gray-700 uppercase tracking-wide">
                       Комментарий
                     </label>
-                    <Textarea id="message" placeholder="Интересует тонировка задних стекол..." rows={4} />
+                    <Textarea id="message" placeholder="Интересует премиальная тонировка..." rows={4} className="text-lg bg-white/50 backdrop-blur-sm border-2 focus:border-primary resize-none" />
                   </div>
-                  <Button type="submit" size="lg" className="w-full text-lg">
-                    <Icon name="Send" size={20} className="mr-2" />
+                  <Button type="submit" size="lg" className="w-full text-lg h-16 bg-gradient-to-r from-primary to-accent hover:shadow-2xl transition-all duration-300 text-white font-bold text-xl">
+                    <Icon name="Send" size={24} className="mr-3" />
                     Отправить заявку
                   </Button>
                 </form>
@@ -438,20 +474,22 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
+      <footer className="luxury-gradient text-white py-16 border-t border-white/10">
+        <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Icon name="Sparkles" size={28} className="text-primary" />
-                <span className="font-bold text-2xl">AutoTint</span>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 bg-gradient-to-br from-primary to-accent rounded-lg">
+                  <Icon name="Car" size={32} className="text-white" />
+                </div>
+                <span className="font-bold text-3xl gold-shine" style={{fontFamily: "'Playfair Display', serif"}}>PREMIUM TINT</span>
               </div>
-              <p className="text-gray-400">
-                Профессиональная тонировка и бронирование автомобилей в Краснодаре. Опыт более 6 лет.
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Профессиональная тонировка и бронирование автомобилей премиум-класса в Краснодаре. Опыт более 6 лет.
               </p>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Навигация</h3>
+              <h3 className="font-bold text-xl mb-6 gold-shine" style={{fontFamily: "'Playfair Display', serif"}}>Навигация</h3>
               <ul className="space-y-2">
                 {menuItems.map((item) => (
                   <li key={item.id}>
@@ -467,8 +505,8 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Контакты</h3>
-              <ul className="space-y-3 text-gray-400">
+              <h3 className="font-bold text-xl mb-6 gold-shine" style={{fontFamily: "'Playfair Display', serif"}}>Контакты</h3>
+              <ul className="space-y-4 text-gray-300 text-lg">
                 <li className="flex items-center gap-2">
                   <Icon name="Phone" size={18} />
                   <span>+7 (900) 123-45-67</span>
@@ -484,8 +522,8 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Мы используем</h3>
-              <ul className="space-y-2 text-gray-400">
+              <h3 className="font-bold text-xl mb-6 gold-shine" style={{fontFamily: "'Playfair Display', serif"}}>Премиум бренды</h3>
+              <ul className="space-y-3 text-gray-300 text-lg">
                 <li>• SunTek</li>
                 <li>• LLumar</li>
                 <li>• Sun Control</li>

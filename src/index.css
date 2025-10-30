@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Playfair+Display:wght@600;700;800;900&family=Open+Sans:wght@400;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -15,17 +15,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 13% 13%;
 
-    --primary: 354 82% 58%;
+    --primary: 28 80% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 24 95% 53%;
+    --secondary: 0 0% 9%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 220 13% 95%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 100% 51%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
@@ -108,8 +108,9 @@
   h4,
   h5,
   h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Playfair Display", serif;
     font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -131,5 +132,26 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-xl bg-white/80 border border-white/20;
+  }
+
+  .luxury-gradient {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+
+  .gold-shine {
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .premium-shadow {
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.3),
+      0 0 1px rgba(255, 255, 255, 0.2) inset;
   }
 }
